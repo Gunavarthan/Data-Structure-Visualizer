@@ -16,7 +16,10 @@
         </div>
     </aside>
     <main class="canvas-area">
-        <canvas #stackCanvas id="stack-canvas" width="800" height="400" (wheel)="onWheel($event)" (mousedown)="onCanvasMouseDown($event)" (mouseup)="onCanvasMouseUp()" (mousemove)="onCanvasMouseMove($event)"></canvas>
+    <div class="canvas-resize-wrapper">
+      <canvas #stackCanvas id="stack-canvas" [width]="canvasWidth" [height]="canvasHeight" (wheel)="onWheel($event)" (mousedown)="onCanvasMouseDown($event)" (mouseup)="onCanvasMouseUp()" (mousemove)="onCanvasMouseMove($event)"></canvas>
+      <div class="resize-handle" (mousedown)="onResizeMouseDown($event)"></div>
+    </div>
     </main>
     <div class="search-message-center" *ngIf="searchMessage">
         <strong>Search:</strong> {{ searchMessage }}

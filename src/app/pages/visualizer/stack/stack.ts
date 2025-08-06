@@ -11,6 +11,44 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './stack.css'
 })
 export class Stack implements AfterViewInit {
+  canvasWidth: number = 800;
+  canvasHeight: number = 400;
+  private resizing = false;
+  private resizeStart = { x: 0, y: 0, width: 0, height: 0 };
+
+  onResizeMouseDown(event: MouseEvent) {
+    event.preventDefault();
+    this.resizing = true;
+    this.resizeStart = {
+      x: event.clientX,
+      y: event.clientY,
+      width: this.canvasWidth,
+      height: this.canvasHeight
+    };
+    window.addEventListener('mousemove', this.onResizeMouseMove);
+    window.addEventListener('mouseup', this.onResizeMouseUp);
+  }
+
+  onResizeMouseMove = (event: MouseEvent) => {
+    if (!this.resizing) return;
+    const dx = event.clientX - this.resizeStart.x;
+    const dy = event.clientY - this.resizeStart.y;
+    this.canvasWidth = Math.max(400, this.resizeStart.width + dx);
+    this.canvasHeight = Math.max(200, this.resizeStart.height + dy);
+    if (this.render) {
+      this.render.canvas.width = this.canvasWidth;
+      this.render.canvas.height = this.canvasHeight;
+      this.render.options.width = this.canvasWidth;
+      this.render.options.height = this.canvasHeight;
+      this.applyZoom();
+    }
+  };
+
+  onResizeMouseUp = () => {
+    this.resizing = false;
+    window.removeEventListener('mousemove', this.onResizeMouseMove);
+    window.removeEventListener('mouseup', this.onResizeMouseUp);
+  };
   // Use pushValue for both push and search
   searchMessage: string = '';
   searching: boolean = false;

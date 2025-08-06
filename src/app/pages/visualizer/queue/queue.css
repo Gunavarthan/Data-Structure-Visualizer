@@ -1,3 +1,22 @@
+.canvas-resize-wrapper {
+  position: relative;
+  display: inline-block;
+}
+.resize-handle {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, #7ee787 0%, #1f6feb 100%);
+  border-radius: 0 0 8px 0;
+  cursor: nwse-resize;
+  z-index: 10;
+  box-shadow: 0 2px 8px #000a;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
 .queue-visualizer-layout {
   display: flex;
   flex-direction: row;

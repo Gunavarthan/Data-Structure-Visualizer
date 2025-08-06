@@ -1,1 +1,24 @@
-<p>queue works!</p>
+<div class="queue-visualizer-layout">
+  <aside class="sidebar">
+    <h2>Queue Operations</h2>
+    <label>Enter value:</label>
+    <input [(ngModel)]="queueValue" (keyup.enter)="enqueue()" />
+    <button (click)="enqueue()">Enqueue</button>
+    <button (click)="dequeue()">Dequeue</button>
+    <button (click)="clear()">Clear</button>
+    <button (click)="searchQueue()" [disabled]="searching">Search</button>
+    <div class="queue-info">
+      <p><strong>Is Empty:</strong> {{ isEmpty() }}</p>
+      <p><strong>Front:</strong> {{ front() }}</p>
+      <p><strong>Size:</strong> {{ size() }}</p>
+      <p><strong>Last Enqueued:</strong> {{ lastEnqueued }}</p>
+      <p><strong>Last Dequeued:</strong> {{ lastDequeued }}</p>
+    </div>
+  </aside>
+  <main class="canvas-area">
+    <canvas #queueCanvas id="queue-canvas" width="1400" height="600" (wheel)="onWheel($event)" (mousedown)="onCanvasMouseDown($event)" (mouseup)="onCanvasMouseUp()" (mousemove)="onCanvasMouseMove($event)"></canvas>
+  </main>
+  <div class="search-message-center" *ngIf="searchMessage">
+    <strong>Search:</strong> {{ searchMessage }}
+  </div>
+</div>

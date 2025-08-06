@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TitleCasePipe, CommonModule, NgComponentOutlet } from '@angular/common';
 import { Stack } from './stack/stack';
+import { Queue } from './queue/queue';
 
 @Component({
   selector: 'app-visualizer',
@@ -20,6 +21,10 @@ export class VisualizerComponent implements OnInit {
     switch (this.dsType) {
       case 'stack':
         this.componentType = Stack;
+        break;
+
+      case 'queue':
+        this.componentType = Queue;
         break;
       // Add more cases for other data structures
       default:

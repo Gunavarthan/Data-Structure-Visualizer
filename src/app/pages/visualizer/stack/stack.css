@@ -1,3 +1,40 @@
+.search-message-center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(40, 40, 60, 0.98);
+  color: #ffb300;
+  font-size: 2rem;
+  font-family: 'Montserrat', Arial, sans-serif;
+  padding: 2rem 3rem;
+  border-radius: 18px;
+  box-shadow: 0 4px 32px #000a;
+  z-index: 10000;
+  text-align: center;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.4s;
+}
+/* Centered search message overlay */
+.search-message-center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(40, 40, 60, 0.95);
+  color: #ffb300;
+  font-size: 2rem;
+  font-family: 'Montserrat', Arial, sans-serif;
+  padding: 2rem 3rem;
+  border-radius: 18px;
+  box-shadow: 0 4px 32px #000a;
+  z-index: 1000;
+  text-align: center;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.4s;
+}
 .stack-visualizer-layout {
   display: flex;
   flex-direction: row;
@@ -20,6 +57,11 @@
 .sidebar h2 {
   margin-top: 0;
   color: #7ee787;
+}
+.sidebar p{
+    margin-top: 0;
+    color: #7ee787;
+    font-size: larger;
 }
 
 .sidebar label {

@@ -1,8 +1,8 @@
 .visualizer-full-window {
   position: fixed;
   inset: 0;
-  width: 100%;
-  height: 100%;
+  width: 98%;
+  height: 98%;
   background: #181824;
   z-index: 10;
   display: flex;

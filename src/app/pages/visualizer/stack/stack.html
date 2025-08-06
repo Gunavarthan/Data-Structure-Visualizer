@@ -1,13 +1,27 @@
 <div class="stack-visualizer-layout">
-  <aside class="sidebar">
-    <h2>Stack Operations</h2>
-    <label>Enter value to push:</label>
-    <input [(ngModel)]="pushValue" (keyup.enter)="confirmPush()" />
-    <button (click)="confirmPush()">Push</button>
-    <button (click)="pop()">Pop</button>
-  </aside>
-  <main class="canvas-area">
-    <canvas #stackCanvas id="stack-canvas" width="800" height="400" (wheel)="onWheel($event)" (mousedown)="onCanvasMouseDown($event)" (mouseup)="onCanvasMouseUp()" (mousemove)="onCanvasMouseMove($event)"></canvas>
-  </main>
+    <aside class="sidebar">
+        <h2>Stack Operations</h2>
+        <label>Enter value:</label>
+        <input [(ngModel)]="pushValue" (keyup.enter)="confirmPush()" />
+        <button (click)="confirmPush()">Push</button>
+        <button (click)="pop()">Pop</button>
+        <button (click)="clear()">Clear</button>
+        <button (click)="searchStack()" [disabled]="searching">Search</button>
+        <div class="stack-info">
+            <p><strong>Is Empty:</strong> {{ isEmpty() }}</p>
+            <p><strong>Top:</strong> {{ top() }}</p>
+            <p><strong>Size:</strong> {{ size() }}</p>
+            <p><strong>Last Pushed:</strong> {{ lastPushed }}</p>
+            <p><strong>Last Poped:</strong> {{ lastPoped }}</p>
+        </div>
+    </aside>
+    <main class="canvas-area">
+        <canvas #stackCanvas id="stack-canvas" width="800" height="400" (wheel)="onWheel($event)" (mousedown)="onCanvasMouseDown($event)" (mouseup)="onCanvasMouseUp()" (mousemove)="onCanvasMouseMove($event)"></canvas>
+    </main>
+    <div class="search-message-center" *ngIf="searchMessage">
+        <strong>Search:</strong> {{ searchMessage }}
+    </div>
+
+  <!-- Move the search message overlay outside main layout for max z-index -->
 </div>
 

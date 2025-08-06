@@ -82,8 +82,8 @@
   align-items: center;
   justify-content: center;
   background: repeating-linear-gradient(45deg, #23233a 0px, #23233a 2px, transparent 2px, transparent 20px);
-  height: 50%;
-  width: 70%;
+  /* height: 50%;
+  width: 70%; */
 }
 
 #queue-canvas {

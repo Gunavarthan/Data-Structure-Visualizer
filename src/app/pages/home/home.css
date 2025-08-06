@@ -1,0 +1,21 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.ds-card {
+  padding: 20px;
+  border: 1px solid #ccc;
+  background: #fdfdfd;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.ds-card:hover {
+  transform: scale(1.05);
+  background: #e7f0ff;
+}

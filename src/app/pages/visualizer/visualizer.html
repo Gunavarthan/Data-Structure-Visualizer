@@ -1,0 +1,6 @@
+<div class="visualizer-full-window">
+  <ng-container *ngIf="componentType" [ngComponentOutlet]="componentType"></ng-container>
+  <div *ngIf="!componentType">
+    <p>No visualizer available for this data structure.</p>
+  </div>
+</div>

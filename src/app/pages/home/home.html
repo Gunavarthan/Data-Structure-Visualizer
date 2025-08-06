@@ -1,0 +1,10 @@
+<div class="grid-container">
+  <div
+    class="ds-card"
+    *ngFor="let ds of dataStructures"
+    (click)="navigateTo(ds.type)"
+  >
+    <h2>{{ ds.name }}</h2>
+    <p>{{ ds.description }}</p>
+  </div>
+</div>

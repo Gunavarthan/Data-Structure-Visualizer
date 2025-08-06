@@ -1,0 +1,13 @@
+<div class="stack-visualizer-layout">
+  <aside class="sidebar">
+    <h2>Stack Operations</h2>
+    <label>Enter value to push:</label>
+    <input [(ngModel)]="pushValue" (keyup.enter)="confirmPush()" />
+    <button (click)="confirmPush()">Push</button>
+    <button (click)="pop()">Pop</button>
+  </aside>
+  <main class="canvas-area">
+    <canvas #stackCanvas id="stack-canvas" width="800" height="400" (wheel)="onWheel($event)" (mousedown)="onCanvasMouseDown($event)" (mouseup)="onCanvasMouseUp()" (mousemove)="onCanvasMouseMove($event)"></canvas>
+  </main>
+</div>
+

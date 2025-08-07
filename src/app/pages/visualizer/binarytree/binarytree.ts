@@ -11,6 +11,58 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './binarytree.css'
 })
 export class Binarytree implements AfterViewInit {
+  // --- Traversal helpers ---
+  get preorder(): string {
+    const res: string[] = [];
+    const dfs = (i: number) => {
+      if (i >= this.nodeBodies.length || !this.nodeBodies[i]) return;
+      res.push(this.nodeBodies[i].label);
+      dfs(this.leftChild(i));
+      dfs(this.rightChild(i));
+    };
+    dfs(0);
+    return res.join(', ');
+  }
+
+  get inorder(): string {
+    const res: string[] = [];
+    const dfs = (i: number) => {
+      if (i >= this.nodeBodies.length || !this.nodeBodies[i]) return;
+      dfs(this.leftChild(i));
+      res.push(this.nodeBodies[i].label);
+      dfs(this.rightChild(i));
+    };
+    dfs(0);
+    return res.join(', ');
+  }
+
+  get postorder(): string {
+    const res: string[] = [];
+    const dfs = (i: number) => {
+      if (i >= this.nodeBodies.length || !this.nodeBodies[i]) return;
+      dfs(this.leftChild(i));
+      dfs(this.rightChild(i));
+      res.push(this.nodeBodies[i].label);
+    };
+    dfs(0);
+    return res.join(', ');
+  }
+
+  get levelorder(): string {
+    const res: string[] = [];
+    const queue: number[] = [];
+    if (this.nodeBodies.length > 0 && this.nodeBodies[0]) queue.push(0);
+    while (queue.length > 0) {
+      const i = queue.shift()!;
+      if (!this.nodeBodies[i]) continue;
+      res.push(this.nodeBodies[i].label);
+      const l = this.leftChild(i);
+      const r = this.rightChild(i);
+      if (l < this.nodeBodies.length && this.nodeBodies[l]) queue.push(l);
+      if (r < this.nodeBodies.length && this.nodeBodies[r]) queue.push(r);
+    }
+    return res.join(', ');
+  }
   // Helper: get left/right child index for array-based binary tree
   private leftChild(idx: number) { return 2 * idx + 1; }
   private rightChild(idx: number) { return 2 * idx + 2; }

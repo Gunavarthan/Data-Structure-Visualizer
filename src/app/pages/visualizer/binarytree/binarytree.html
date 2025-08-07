@@ -1,0 +1,31 @@
+<div class="binarytree-visualizer-layout">
+  <div class="sidebar">
+    <h2>Binary Tree</h2>
+    <label for="tree-value">Value</label>
+    <input id="tree-value" [(ngModel)]="treeValue" (keyup.enter)="insertNode()" placeholder="Enter value" />
+    <button (click)="insertNode()">Insert</button>
+    <button (click)="deleteNode()">Delete</button>
+    <button (click)="searchNode()">Search</button>
+    <button (click)="clear()">Clear</button>
+    <div class="list-info">
+        <p><strong>Root:</strong> {{ root() }}</p>
+        <p><strong>Size:</strong> {{ size() }}</p>
+        <p><strong>Height:</strong> {{ height() }}</p>
+        <p><strong>Last Inserted:</strong> {{ lastInserted }}</p>
+        <p><strong>Last Deleted:</strong> {{ lastDeleted }}</p>
+    </div>
+  </div>
+  <div class="canvas-area">
+    <div class="canvas-resize-wrapper" [style.width.px]="canvasWidth" [style.height.px]="canvasHeight">
+      <canvas #treeCanvas id="tree-canvas"
+        [width]="canvasWidth" [height]="canvasHeight"
+        (mousedown)="onCanvasMouseDown($event)"
+        (mouseup)="onCanvasMouseUp()"
+        (mousemove)="onCanvasMouseMove($event)"
+        (mouseleave)="onCanvasMouseUp()"
+        (wheel)="onWheel($event)"></canvas>
+      <div class="resize-handle" (mousedown)="onResizeMouseDown($event)"></div>
+    </div>
+    <div *ngIf="searchMessage" class="search-message-center">{{ searchMessage }}</div>
+  </div>
+</div>

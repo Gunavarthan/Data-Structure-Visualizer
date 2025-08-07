@@ -16,7 +16,7 @@ export class HomeComponent {
     { name: 'Stack', type: 'stack', description: 'LIFO structure' },
     { name: 'Queue', type: 'queue', description: 'FIFO structure' },
     { name: 'Linked List', type: 'linked-list', description: 'Sequential data' },
-    { name: 'Binary Tree', type: 'tree', description: 'Hierarchical data' },
+    { name: 'Binary Tree', type: 'binary-tree', description: 'Hierarchical data' },
     { name: 'Graph', type: 'graph', description: 'Nodes and edges' },
   ];
 

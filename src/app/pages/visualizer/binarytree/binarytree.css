@@ -1,0 +1,118 @@
+
+.binarytree-visualizer-layout {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 100vw;
+  background: #181824;
+}
+.sidebar {
+  width: 220px;
+  background: #23233a;
+  border-right: 1px solid #22223a;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: #f3f3f3;
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+.sidebar h2 {
+  margin-top: 0;
+  color: #7ee787;
+  font-size: 2rem;
+}
+.sidebar p {
+  margin-top: 0;
+  color: #7ee787;
+  font-size: larger;
+}
+.sidebar label {
+  font-weight: bold;
+  margin-bottom: 4px;
+  color: #e2e2e2;
+  font-size: 1.1rem;
+}
+.sidebar input {
+  margin-bottom: 8px;
+  padding: 6px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #444;
+  background: #23233a;
+  color: #f3f3f3;
+}
+.sidebar button {
+  margin-bottom: 8px;
+  padding: 8px 16px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: none;
+  background: linear-gradient(90deg, #7ee787 0%, #1f6feb 100%);
+  color: #181824;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.sidebar button:hover {
+  background: linear-gradient(90deg, #1f6feb 0%, #7ee787 100%);
+  transform: scale(1.05);
+}
+.sidebar button:disabled {
+  background: #444;
+  color: #aaa;
+  cursor: not-allowed;
+}
+.list-info {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  color: #fff;
+}
+.canvas-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: repeating-linear-gradient(45deg, #23233a 0px, #23233a 2px, transparent 2px, transparent 20px);
+}
+.canvas-resize-wrapper {
+  position: relative;
+  display: inline-block;
+}
+.resize-handle {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, #7ee787 0%, #1f6feb 100%);
+  border-radius: 0 0 8px 0;
+  cursor: nwse-resize;
+  z-index: 10;
+  box-shadow: 0 2px 8px #000a;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+#tree-canvas {
+  border: 1px solid #444;
+  background: transparent;
+  border-radius: 8px;
+}
+.search-message-center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(40, 40, 60, 0.98);
+  color: #ffb300;
+  font-size: 2rem;
+  font-family: 'Montserrat', Arial, sans-serif;
+  padding: 2rem 3rem;
+  border-radius: 18px;
+  box-shadow: 0 4px 32px #000a;
+  z-index: 10000;
+  text-align: center;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.4s;
+}

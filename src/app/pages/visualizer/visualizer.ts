@@ -4,6 +4,7 @@ import { TitleCasePipe, CommonModule, NgComponentOutlet } from '@angular/common'
 import { Stack } from './stack/stack';
 import { Queue } from './queue/queue';
 import { Linkedlist } from './linkedlist/linkedlist';
+import { Binarytree } from './binarytree/binarytree';
 
 @Component({
   selector: 'app-visualizer',
@@ -30,6 +31,10 @@ export class VisualizerComponent implements OnInit {
       
       case 'linked-list':
         this.componentType = Linkedlist;
+        break;
+
+      case 'binary-tree':
+        this.componentType = Binarytree;
         break;
       // Add more cases for other data structures
       default:

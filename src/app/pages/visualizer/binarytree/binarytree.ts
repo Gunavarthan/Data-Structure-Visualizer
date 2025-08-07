@@ -284,11 +284,12 @@ export class Binarytree implements AfterViewInit {
       }
       // Draw nodes
       for (const body of this.nodeBodies) {
+        if (!body) continue;
         const screenX = (body.position.x - bounds.min.x) * scaleX;
         const screenY = (body.position.y - bounds.min.y) * scaleY;
         ctx.beginPath();
         ctx.arc(screenX, screenY, 30, 0, 2 * Math.PI);
-        ctx.fillStyle = '#02D4E3';
+        ctx.fillStyle = body.render.fillStyle || '#02D4E3';
         ctx.fill();
         ctx.strokeStyle = '#1f6feb';
         ctx.lineWidth = 4;

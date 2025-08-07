@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { TitleCasePipe, CommonModule, NgComponentOutlet } from '@angular/common';
 import { Stack } from './stack/stack';
 import { Queue } from './queue/queue';
+import { Linkedlist } from './linkedlist/linkedlist';
 
 @Component({
   selector: 'app-visualizer',
@@ -25,6 +26,10 @@ export class VisualizerComponent implements OnInit {
 
       case 'queue':
         this.componentType = Queue;
+        break;
+      
+      case 'linked-list':
+        this.componentType = Linkedlist;
         break;
       // Add more cases for other data structures
       default:

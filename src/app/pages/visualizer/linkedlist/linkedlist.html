@@ -1,0 +1,30 @@
+<div class="linkedlist-visualizer-layout">
+  <aside class="sidebar">
+    <h2>Linked List Operations</h2>
+    <label>Enter value:</label>
+    <input [(ngModel)]="listValue" (keyup.enter)="insertAtLast()" />
+    <button (click)="insertAtLast()">Insert at Last</button>
+    <button (click)="insertAtFront()">Insert at Front</button>
+    <button (click)="deleteNode()">Delete</button>
+    <button (click)="clear()">Clear</button>
+    <button (click)="searchNode()" [disabled]="searching">Search</button>
+    <div class="list-info">
+      <p><strong>Is Empty:</strong> {{ isEmpty() }}</p>
+      <p><strong>Head:</strong> {{ head() }}</p>
+      <p><strong>Tail:</strong> {{ tail() }}</p>
+      <p><strong>Size:</strong> {{ size() }}</p>
+      <p><strong>Last Inserted:</strong> {{ lastInserted }}</p>
+      <p><strong>Last Deleted:</strong> {{ lastDeleted }}</p>
+    </div>
+  </aside>
+  <main class="canvas-area">
+    <div class="canvas-resize-wrapper">
+      <canvas #listCanvas id="list-canvas" [width]="canvasWidth" [height]="canvasHeight" (wheel)="onWheel($event)" (mousedown)="onCanvasMouseDown($event)" (mouseup)="onCanvasMouseUp()" (mousemove)="onCanvasMouseMove($event)"></canvas>
+      <div class="resize-handle" (mousedown)="onResizeMouseDown($event)"></div>
+    </div>
+  </main>
+  <div class="search-message-center" *ngIf="searchMessage">
+    <strong>Search:</strong> {{ searchMessage }}
+  </div>
+</div>
+<p>linkedlist works!</p>

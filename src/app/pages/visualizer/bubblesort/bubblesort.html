@@ -1,0 +1,34 @@
+<div class="binarytree-visualizer-layout">
+  <div class="sidebar">
+    <h2>Bubble Sort</h2>
+    <label for="preset">Preset Size</label>
+    <select id="preset" [(ngModel)]="numBars" (change)="resetArray()">
+      <option [value]="20">20</option>
+      <option [value]="50">50</option>
+      <option [value]="100">100</option>
+    </select>
+    <label for="speed">Speed</label>
+    <select id="speed" [(ngModel)]="speed">
+      <option [value]="0.5">Slow</option>
+      <option [value]="1">Normal</option>
+      <option [value]="2">Fast</option>
+    </select>
+    <button (click)="resetArray()">Randomize</button>
+    <button (click)="bubbleSort()" [disabled]="sorting">Sort</button>
+    <button (click)="startStepSort()" [disabled]="sorting || stepSorting">Step-by-step</button>
+    <div style="display:flex; gap:8px; margin-bottom:8px;">
+      <button (click)="prevStep()" [disabled]="!stepSorting">Prev</button>
+      <button (click)="nextStep()" [disabled]="!stepSorting">Next</button>
+    </div>
+    <div class="list-info">
+      <p><strong>Array:</strong></p>
+      <p style="word-break:break-all; color:#fff; font-size:1rem;">{{ array.join(', ') }}</p>
+    </div>
+  </div>
+  <div class="canvas-area">
+    <div class="canvas-resize-wrapper" [style.width.px]="canvasWidth" [style.height.px]="canvasHeight">
+      <canvas #sortCanvas id="sort-canvas" width="{{canvasWidth}}" height="{{canvasHeight}}"></canvas>
+      <!-- Optionally add resize handle for consistency -->
+    </div>
+  </div>
+</div>

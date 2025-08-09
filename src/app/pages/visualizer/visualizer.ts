@@ -5,6 +5,9 @@ import { Stack } from './stack/stack';
 import { Queue } from './queue/queue';
 import { Linkedlist } from './linkedlist/linkedlist';
 import { Binarytree } from './binarytree/binarytree';
+import { Binarysearchtree } from './binarysearchtree/binarysearchtree';
+import { Maxheap } from './maxheap/maxheap';
+import { Bubblesort } from './bubblesort/bubblesort';
 
 @Component({
   selector: 'app-visualizer',
@@ -35,6 +38,18 @@ export class VisualizerComponent implements OnInit {
 
       case 'binary-tree':
         this.componentType = Binarytree;
+        break;
+      
+      case 'binary-search-tree':
+        this.componentType = Binarysearchtree;
+        break;
+      
+      case 'max-heap':
+        this.componentType = Maxheap; // Assuming MaxHeap uses BinaryTree logic
+        break;
+      
+      case 'bubble-sort':
+        this.componentType = Bubblesort;
         break;
       // Add more cases for other data structures
       default:

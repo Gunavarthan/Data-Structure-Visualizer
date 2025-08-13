@@ -12,6 +12,54 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './bubblesort.css'
 })
 export class Bubblesort implements AfterViewInit {
+  speed: number = 1;
+  stepSorting: boolean = false;
+  steps: {i: number, j: number, swapped: boolean, arr: number[]}[] = [];
+  currentStep: number = 0;
+  startStepSort() {
+    this.prepareSteps();
+    this.stepSorting = true;
+    this.currentStep = 0;
+    this.nextStep();
+  }
+
+  prevStep() {
+    if (!this.stepSorting || this.currentStep <= 1) return;
+    this.currentStep -= 2;
+    this.nextStep();
+  }
+
+  nextStep() {
+    if (!this.stepSorting || this.currentStep >= this.steps.length) return;
+    const step = this.steps[this.currentStep];
+    this.array = step.arr.slice();
+    this.drawHistogram();
+    // Highlight bars
+    this.setBarColor(step.i, this.swapColor);
+    this.setBarColor(step.j, this.swapColor);
+    if (step.swapped) {
+      this.setBarColor(step.j, '#1f6feb');
+    }
+    this.currentStep++;
+    if (this.currentStep >= this.steps.length) {
+      this.stepSorting = false;
+    }
+  }
+
+  prepareSteps() {
+    this.steps = [];
+    let arr = this.array.slice();
+    for (let i = 0; i < arr.length - 1; i++) {
+      for (let j = 0; j < arr.length - i - 1; j++) {
+        let swapped = false;
+        if (arr[j] > arr[j + 1]) {
+          [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+          swapped = true;
+        }
+        this.steps.push({ i: j, j: j + 1, swapped, arr: arr.slice() });
+      }
+    }
+  }
   @ViewChild('sortCanvas', { static: false }) canvasRef!: ElementRef<HTMLCanvasElement>;
   canvasWidth = 1000;
   canvasHeight = 500;
@@ -25,11 +73,6 @@ export class Bubblesort implements AfterViewInit {
   swapColor = '#ffb300';
   defaultColor = '#7ee787';
   sortedColor = '#43ea4a';
-  speed = 1; // 1=normal, 2=fast, 0.5=slow
-  stepMode = false;
-  currentStep = 0;
-  steps: {i: number, j: number, swapped: boolean, arr: number[]}[] = [];
-  stepSorting = false;
 
   constructor(private ngZone: NgZone) {}
 
@@ -67,17 +110,12 @@ export class Bubblesort implements AfterViewInit {
 
   drawHistogram() {
     this.clearBars();
-    // Calculate bar width and spacing for clarity
-    const maxBarWidth = 32;
-    const minSpacing = 6;
-    let barWidth = Math.min(maxBarWidth, (this.canvasWidth - (this.array.length + 1) * minSpacing) / this.array.length);
-    let spacing = (this.canvasWidth - this.array.length * barWidth) / (this.array.length + 1);
-    if (barWidth < 8) barWidth = 8; // minimum readable
+    const barWidth = this.canvasWidth / this.array.length;
     for (let i = 0; i < this.array.length; i++) {
       const height = this.array[i];
-      const x = spacing + i * (barWidth + spacing) + barWidth / 2;
-      const y = this.canvasHeight - height / 2 - 8; // leave space for label
-      const bar = Matter.Bodies.rectangle(x, y, barWidth, height, {
+      const x = i * barWidth + barWidth / 2;
+      const y = this.canvasHeight - height / 2;
+      const bar = Matter.Bodies.rectangle(x, y, barWidth * 0.8, height, {
         isStatic: true,
         render: {
           fillStyle: this.defaultColor,
@@ -92,75 +130,19 @@ export class Bubblesort implements AfterViewInit {
 
   // Custom rendering for value labels on bars
   private overrideRenderLabels() {
-    // Remove previous event listeners to avoid stacking
-    Matter.Events.off(this.render, 'afterRender');
     Matter.Events.on(this.render, 'afterRender', () => {
       const ctx = this.render.context;
       ctx.save();
-      ctx.font = 'bold 15px Montserrat, Arial';
+      ctx.font = 'bold 18px Montserrat, Arial';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'bottom';
       for (let i = 0; i < this.bars.length; i++) {
         const bar = this.bars[i];
-        // Always show label above bar, even if narrow
         ctx.fillStyle = '#fff';
-        ctx.fillText(String(this.array[i]), bar.position.x, bar.position.y - (bar.bounds.max.y - bar.position.y) - 4);
+        ctx.fillText(String(this.array[i]), bar.position.x, bar.position.y - bar.bounds.max.y + bar.position.y - 8);
       }
       ctx.restore();
     });
-  }
-
-  setSpeed(val: number) {
-    this.speed = val;
-  }
-
-  // --- Step-by-step Bubble Sort ---
-  prepareSteps() {
-    this.steps = [];
-    let arr = this.array.slice();
-    for (let i = 0; i < arr.length - 1; i++) {
-      for (let j = 0; j < arr.length - i - 1; j++) {
-        let swapped = false;
-        if (arr[j] > arr[j + 1]) {
-          [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
-          swapped = true;
-        }
-        this.steps.push({ i: j, j: j + 1, swapped, arr: arr.slice() });
-      }
-    }
-    this.currentStep = 0;
-    this.stepMode = true;
-    this.stepSorting = false;
-  }
-
-  nextStep() {
-    if (!this.stepMode || this.currentStep >= this.steps.length) return;
-    const step = this.steps[this.currentStep];
-    this.array = step.arr.slice();
-    this.drawHistogram();
-    // Highlight bars
-    this.setBarColor(step.i, this.swapColor);
-    this.setBarColor(step.j, this.swapColor);
-    if (step.swapped) {
-      this.setBarColor(step.j, '#1f6feb');
-    }
-    this.currentStep++;
-    if (this.currentStep >= this.steps.length) {
-      this.stepSorting = false;
-      this.stepMode = false;
-    }
-  }
-
-  prevStep() {
-    if (!this.stepMode || this.currentStep <= 1) return;
-    this.currentStep -= 2;
-    this.nextStep();
-  }
-
-  startStepSort() {
-    this.prepareSteps();
-    this.stepSorting = true;
-    this.nextStep();
   }
 
   // Bubble Sort animation
@@ -193,13 +175,9 @@ export class Bubblesort implements AfterViewInit {
 
   private async animateSwap(i: number, j: number, delay = 300) {
     // Animate the bars swapping positions horizontally
-    const maxBarWidth = 32;
-    const minSpacing = 6;
-    let barWidth = Math.min(maxBarWidth, (this.canvasWidth - (this.array.length + 1) * minSpacing) / this.array.length);
-    let spacing = (this.canvasWidth - this.array.length * barWidth) / (this.array.length + 1);
-    if (barWidth < 8) barWidth = 8;
-    const x1 = spacing + i * (barWidth + spacing) + barWidth / 2;
-    const x2 = spacing + j * (barWidth + spacing) + barWidth / 2;
+    const barWidth = this.canvasWidth / this.array.length;
+    const x1 = i * barWidth + barWidth / 2;
+    const x2 = j * barWidth + barWidth / 2;
     const barA = this.bars[i];
     const barB = this.bars[j];
     const steps = 12;

@@ -10,6 +10,22 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./home.css'],
 })
 export class HomeComponent {
+  heroTitleStyle = {};
+
+  onHeroMouseMove(event: MouseEvent) {
+    const section = (event.currentTarget as HTMLElement);
+    const rect = section.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * 3;
+    const rotateY = ((x - centerX) / centerX) * 3;
+    this.heroTitleStyle = {
+      transform: `perspective(600px) rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`,
+      textShadow: `${-rotateY}px ${rotateX}px 8px #7f9cf5AA`
+    };
+  }
   constructor(private router: Router) {}
 
   dataStructures = [

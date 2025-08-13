@@ -1,21 +1,72 @@
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+body {
+  color: #fdfdfd;
+}
+
+.hero-section {
+  width: 100%;
+  background: linear-gradient(90deg, #181824 60%, #2e3350 100%);
+  padding: 60px 0 40px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  animation: fadeIn 1s;
+}
+.hero-title {
+  font-size: 3rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #7f9cf5;
+}
+.hero-desc {
+  font-size: 1.2rem;
+  margin: 20px 0;
+  color: #c3c8e8;
+}
+
+.scroll-section {
+  margin: 32px 0;
+}
+.section-title {
+  font-size: 1.5rem;
+  color: #7f9cf5;
+  margin-left: 24px;
+}
+.scroll-grid {
+  display: flex;
+  overflow-x: auto;
   gap: 20px;
-  padding: 20px;
+  padding: 20px 24px;
+  scrollbar-width: thin;
+  scrollbar-color: #7f9cf5 #23243a;
 }
-
-.ds-card {
-  padding: 20px;
-  border: 1px solid #ccc;
-  background: #fdfdfd;
-  border-radius: 10px;
+.scroll-grid::-webkit-scrollbar {
+  height: 8px;
+}
+.scroll-grid::-webkit-scrollbar-thumb {
+  background: #7f9cf5;
+  border-radius: 8px;
+}
+.ds-card, .algo-card {
+  min-width: 220px;
+  max-width: 260px;
+  background: #23243a;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(44, 51, 80, 0.08);
+  border: 1px solid #35355a;
+  color: #fdfdfd;
   text-align: center;
+  padding: 24px 16px;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
-
-.ds-card:hover {
+.ds-card:hover, .algo-card:hover {
   transform: scale(1.05);
-  background: #e7f0ff;
+  box-shadow: 0 4px 16px rgba(127,156,245,0.15);
+  border-color: #7f9cf5;
+  color: #7f9cf5;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

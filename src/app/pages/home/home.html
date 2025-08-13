@@ -1,10 +1,35 @@
-<div class="grid-container">
-  <div
-    class="ds-card"
-    *ngFor="let ds of dataStructures"
-    (click)="navigateTo(ds.type)"
-  >
-    <h2>{{ ds.name }}</h2>
-    <p>{{ ds.description }}</p>
+
+<div class="hero-section">
+  <div class="hero-content">
+    <h1 class="hero-title">Data Structure Visualizer</h1>
+    <p class="hero-desc">Visualize, interact, and master DSA concepts with ease!</p>
+  </div>
+</div>
+
+<div class="scroll-section">
+  <h2 class="section-title">Data Structures</h2>
+  <div class="scroll-grid">
+    <div
+      class="ds-card"
+      *ngFor="let ds of dataStructures"
+      (click)="navigateTo(ds.type)"
+    >
+      <h3>{{ ds.name }}</h3>
+      <p>{{ ds.description }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="scroll-section">
+  <h2 class="section-title">Algorithms</h2>
+  <div class="scroll-grid">
+    <div
+      class="algo-card"
+      *ngFor="let algo of algorithms"
+      (click)="navigateTo(algo.type)"
+    >
+      <h3>{{ algo.name }}</h3>
+      <p>{{ algo.description }}</p>
+    </div>
   </div>
 </div>

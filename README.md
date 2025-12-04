@@ -3,6 +3,9 @@
 
 An interactive web application built with Angular 20 and Matter.js physics engine for visualizing data structures and algorithms with real-time animations, drag-and-drop functionality, and resizable canvases.
 
+
+<img width="1887" height="970" alt="Image" src="https://github.com/user-attachments/assets/797f612e-6e59-4a80-8257-259aee53085c" />
+
 ## 🚀 Features
 
 ### Interactive Visualizations

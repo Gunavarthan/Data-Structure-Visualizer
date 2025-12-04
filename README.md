@@ -1,59 +1,129 @@
-# DSAVIZ
+# DSA-VIZ 🎯
+**Interactive Data Structures and Algorithms Visualizer**
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.3.
+An interactive web application built with Angular 20 and Matter.js physics engine for visualizing data structures and algorithms with real-time animations, drag-and-drop functionality, and resizable canvases.
 
-## Development server
+## 🚀 Features
 
-To start a local development server, run:
+### Interactive Visualizations
+- **Drag & Drop Nodes**: Click and drag any node to reposition it dynamically
+- **Resizable Canvas**: Drag the resize handle to adjust visualization area
+- **Zoom & Pan**: Mouse wheel zoom and click-drag panning for better view control
+- **Real-time Updates**: Instant visual feedback for all operations
+- **Physics-based Animation**: Smooth, natural movement using Matter.js
+
+### Advanced UI Components
+- **Collapsible Sidebar**: Clean control panel with operation buttons and statistics
+- **Live Statistics Display**: Real-time size, height, and traversal information
+- **Search Highlighting**: Visual feedback during search operations
+- **Operation Feedback**: Clear status messages for all operations
+
+## 📊 Available Data Structures
+
+### Linear Data Structures
+- **Stack** - LIFO (Last In, First Out) structure
+  - Push, Pop, Peek operations
+  - Visual top pointer indication
+  
+- **Queue** - FIFO (First In, First Out) structure
+  - Enqueue, Dequeue, Front operations
+  - Front and rear pointer visualization
+
+- **Linked List** - Sequential node-based structure
+  - Insert, Delete, Search operations
+  - Visual pointer connections between nodes
+
+### Tree Data Structures
+- **Binary Tree** - Hierarchical structure with max 2 children per node
+  - Insert, Delete operations with automatic balancing visualization
+  - Tree traversals: Preorder, Inorder, Postorder, Level-order
+
+- **Binary Search Tree (BST)** - Ordered binary tree
+  - Maintains BST property during insertions
+  - Search operations with path highlighting
+  - Complete traversal methods display
+
+- **Max Heap** - Complete binary tree with heap property
+  - Insert with bubble-up animation
+  - Extract-max with bubble-down visualization
+  - Heap property maintenance
+
+### Algorithms
+- **Bubble Sort** - Simple comparison-based sorting
+  - Step-by-step visualization of swaps
+  - Comparison highlighting during execution
+
+## 🎮 Interactive Controls
+
+### Node Manipulation
+- **Drag Nodes**: Click and hold any node to move it around
+- **Canvas Resize**: Use the resize handle in bottom-right corner
+- **Zoom Control**: Mouse wheel to zoom in/out
+- **Pan View**: Click and drag empty canvas area to pan
+
+### Operations Panel
+Each data structure provides:
+- **Input Field**: Enter values for operations
+- **Action Buttons**: Insert, Delete, Search, Clear
+- **Statistics Display**: Live updates of structure properties
+- **Traversal Results**: Real-time traversal sequences
+
+## 💻 Quick Commands
 
 ```bash
-ng serve
+ng serve                    # Start local development server
+ng build                    # Build for production
+ng test                     # Run unit tests
+npm start                   # Alternative to ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 🛠 Technical Stack
 
-## Code scaffolding
+- **Frontend**: Angular 20 with Standalone Components
+- **Physics Engine**: Matter.js for realistic node interactions
+- **Styling**: Modern CSS with responsive design
+- **Type Safety**: TypeScript with strict mode
+- **Testing**: Jasmine + Karma
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 🎯 Key Implementation Features
 
-```bash
-ng generate component component-name
-```
+### Matter.js Integration
+- Physics-based node movement and collision detection
+- Smooth animations for all operations
+- Realistic drag and drop interactions
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Component Architecture
+- Standalone Angular components for each data structure
+- Shared routing and navigation system
+- Modular design for easy extension
 
-```bash
-ng generate --help
-```
+### Responsive Design
+- Resizable visualization canvas
+- Adaptive sidebar layout
+- Mobile-friendly touch controls
 
-## Building
+### Performance Optimizations
+- Efficient rendering with requestAnimationFrame
+- Optimized collision detection
+- Memory management for large datasets
 
-To build the project run:
+## 📱 Usage
 
-```bash
-ng build
-```
+1. **Start Server**: `ng serve` - Navigate to `http://localhost:4200/`
+2. **Select Structure**: Choose from the home page grid
+3. **Interact**: Use the sidebar controls to perform operations
+4. **Visualize**: Watch real-time animations of your operations
+5. **Customize**: Resize canvas and drag nodes for optimal viewing
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## 🔧 Development
 
-## Running unit tests
+Built with Angular CLI 20.0.3 featuring:
+- Modern Angular standalone components
+- TypeScript 5.8+ with strict typing
+- Matter.js physics engine integration
+- Responsive CSS Grid layouts
+- Component-based architecture
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+---
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+*Explore, Learn, and Visualize Data Structures like never before! 🌟*

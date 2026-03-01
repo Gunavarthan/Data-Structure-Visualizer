@@ -6,6 +6,9 @@ An interactive web application built with Angular 20 and Matter.js physics engin
 
 <img width="1887" height="970" alt="Image" src="https://github.com/user-attachments/assets/797f612e-6e59-4a80-8257-259aee53085c" />
 
+
+## DEMO
+https://data-structure-visualizerr.netlify.app
 ## 🚀 Features
 
 ### Interactive Visualizations
